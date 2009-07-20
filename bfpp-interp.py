@@ -134,7 +134,7 @@ class Interp():
             self.socket.close()
             self.socket = None
             self.cells[self.cellpointer] = self.maxint
-            sys.stderr.write("creating socket failed (%s,%s) : %s" 
+            sys.stderr.write("creating socket failed (%s,%s) : %s"
                               %(host, port, msg))
 
 
