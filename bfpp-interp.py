@@ -22,6 +22,7 @@ class Interp():
         self.socket = None
         self.file = None
         self.code = code
+        self.socketbuf = None
         if code == '':
            return None
 
@@ -62,19 +63,13 @@ class Interp():
                 if self.socket:
                     self.socket.send(chr(self.cells[self.cellpointer]))
             elif i == '!':
-                if self.socket:
-                    try:
-                        self.cells[self.cellpointer] = ord(self.socket.recv(1))
-                    except (socket.error, TypeError):
-                        self.cells[self.cellpointer] = 0
-                else:
-                    self.cells[self.cellpointer] = 0
+                self.readFromSocket()
             elif i == '#':
-                print "TODO: # encountered"
+                print "TODO: '#' encountered"
             elif i == ';':
-                print "; encountered"
+                print "TODO: ';' encountered"
             elif i == ':':
-                print ": encountered"
+                print "TODO: ':' encountered"
             elif i == 'D':
                 self.debug()
             if self.codecursor == len(self.code) - 1:
@@ -82,6 +77,27 @@ class Interp():
                 break
             else:
                 self.codecursor += 1
+
+    def readFromSocket(self):
+        if self.socketbuf:
+            if self.socketbufpos < len(self.socketbuf):
+                self.cells[self.cellpointer] = \
+                    ord(self.socketbuf[self.socketbufpos])
+                self.socketbufpos += 1
+                return
+            else:
+                self.socketbuf = None
+        if self.socket:
+            try:
+                self.socketbuf = self.socket.recv(4096)
+                sys.stderr.write(self.socketbuf)
+                self.cells[self.cellpointer] = ord(self.socketbuf[0])
+                self.socketbufpos = 1
+            except (socket.error, TypeError):
+                self.cells[self.cellpointer] = 0
+                return
+        else:
+            self.cells[self.cellpointer] = 0
 
     def matchingbracket(self):
         if self.code[self.codecursor] == '[':
@@ -129,6 +145,7 @@ class Interp():
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.socket.connect((host, int(port)))
+            self.socket.setblocking(1)
             self.cells[self.cellpointer] = 0
         except socket.error, msg:
             self.socket.close()
