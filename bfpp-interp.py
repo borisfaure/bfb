@@ -16,7 +16,7 @@ import socket
 class Interp():
     def __init__(self, code):
         self.cells = [0] * 30000
-        self.maxint = (2 ** 8)
+        self.maxint = (2 ** 8) - 1
         self.cellpointer = 0
         self.codecursor = 0
         self.socket = None
