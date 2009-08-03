@@ -4,38 +4,38 @@
   >++++++++[<---------->-]<
   >[-]+>[-]<<[>>
 = !P
-    #include(skiplinesocket.b)
+    @include(skiplinesocket.b)
   <<[-]>-]>[>
 = =P
     ![.
       >++++++++[<--------->-]<-
       >[-]+>[-]<<[>>
 = !I
-        #include(skiplinesocket.b)
+        @include(skiplinesocket.b)
       <<[-]>-]>[>
 = =I
         ![.
           >++++++[<------------->-]<
           >[-]+>[-]<<[>>
 = !N
-            #include(skiplinesocket.b)
+            @include(skiplinesocket.b)
           <<[-]>-]>[>
 = =N
             ![.
               >++++++++[<--------->-]<+
               >[-]+>[-]<<[>>
 = !G
-                #include(skiplinesocket.b)
+                @include(skiplinesocket.b)
               <<[-]>-]>[>
 = =G
                 ![.
                   >++++[<-------->-]<
                   >[-]+>[-]<<[>>
 = ! space
-                    #include(skiplinesocket.b)
+                    @include(skiplinesocket.b)
                   <<[-]>-]>[>
 = =space
-                    #include(pong.b)
+                    @include(pong.b)
                   <<>->]<<
                 ]
               <<>->]<<

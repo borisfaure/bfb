@@ -20,7 +20,7 @@ import os
 
 
 def preprocess(filename, debug = False):
-    include_re = re.compile(r'\s*#include\(([^)]+)\)')
+    include_re = re.compile(r'\s*@include\(([^)]+)\)')
     if debug:
         BFIS = set([',','.','-','+','[',']','<','>','#',';',':','%','^','!','D'])
     else:
