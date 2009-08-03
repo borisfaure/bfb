@@ -10,7 +10,7 @@ syntax match  Type           "[<>]"
 syntax match  Conditional    "[[\]]"
 syntax match  PreProc        "[.,%!^#:;]"
 syntax region Include   start="^\s*@include(" end=")"
-syntax region Comment   start="^=" skip="\\$" end="$" keepend
+syntax region Comment   start="=" skip="\\$" end="$" keepend
 
 let b:current_syntax = "bfpp"
 

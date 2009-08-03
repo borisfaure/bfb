@@ -7,7 +7,7 @@ from multiple source files.
 The include statement is expected to appear alone on a single line and
 be on the form
 
- #include(FILENAME)
+ @include(FILENAME)
 
 where FILENAME is the path of the file to include. The path must be absolute
 or relative to the file holding the include statement.
@@ -34,9 +34,10 @@ def preprocess(filename, debug = False):
 
     data = []
     for line in file:
-        if len(line) != 0 and line[0] != '=':
+        if len(line) != 0:
             m = include_re.match(line)
             if m:
                 line = preprocess(os.path.join(directory, m.group(1)), debug)
+            (line, sep, ignore) = line.partition('=')
             data.append(''.join(c for c in line if c in BFIS))
     return ''.join(data)
