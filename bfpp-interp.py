@@ -171,7 +171,7 @@ class Interp():
                 y = int(y)
             except ValueError:
                 return
-            for i in range(x,y):
+            for i in range(x,y+1):
                 print "| %d" % (self.cells[i],),
             print ''
 
