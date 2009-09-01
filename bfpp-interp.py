@@ -90,7 +90,6 @@ class Interp():
         if self.socket:
             try:
                 self.socketbuf = self.socket.recv(4096)
-                sys.stderr.write(self.socketbuf)
                 self.cells[self.cellpointer] = ord(self.socketbuf[0])
                 self.socketbufpos = 1
             except (socket.error, TypeError):
