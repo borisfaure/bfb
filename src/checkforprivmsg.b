@@ -5,6 +5,34 @@
 =   check for "#geek" => check for % then handlecommand.b
 = :boris!~boris@localhost PRIVMSG #geek :PLOP
 = :boris!~boris@localhost PRIVMSG bfb :PLOP
+= Current pointer is 6
+= | 0 | 0 | 0 | 1 | 0 | 1 | 0# |
+[-]>[-]+[>
+  [>]
+  >![.
+    = Move CUR to CUR-1
+    [-<+>]
 
-@include(skiplinesocket.b)
 
+
+
+    <
+    ----------
+    >[-]+>[-]<<[>>
+      = ! \n
+      <<++++++++++>>
+      = TODO: check for ' ' then search back to '!'
+    <<>-]>[
+      = =\n
+      -<<
+      [[-]<]
+      >>
+    ]<<
+    >
+
+
+
+  ]<
+  [<]
+  >
+]<
