@@ -1,9 +1,6 @@
 #!/usr/bin/python
 """
 A brainfuck++ interpertor. Based on pybrain4.
-
-TODO:
- - support all brainfuck++ operators
 """
 import os
 import sys
@@ -43,7 +40,7 @@ def TranslateToC(code, file):
         elif op == '#':
             file.write('bf_file_open_close(r, &ptr);\n');
         elif op == ';':
-            file.write('bf_file_send(r, &ptr);\n');
+            file.write('bf_file_write(r, &ptr);\n');
         elif op == ':':
             file.write('bf_file_read(r, &ptr);\n');
         elif op == 'D':
@@ -103,11 +100,40 @@ class Interp():
             elif i == '!':
                 self.readFromSocket()
             elif i == '#':
-                print "TODO: '#' encountered"
+                if self.file is not None:
+                    self.file.close()
+                else:
+                    fname = ""
+                    curcellpointer = self.cellpointer
+                    while self.cells[curcellpointer] != 0:
+                        fname = fname + chr(self.cells[curcellpointer])
+                        curcellpointer += 1
+                    try:
+                        self.file = open(fname)
+                        self.cells[self.cellpointer] = 0
+                    except IOError, msg:
+                        self.file = None
+                        self.cells[self.cellpointer] = self.maxint
+                        sys.stderr.write("opening file '%s' failed: %s"
+                              %(fname, msg))
             elif i == ';':
-                print "TODO: ';' encountered"
+                if self.file is not None:
+                    try:
+                        self.file.write(chr(self.cells[self.cellpointer]))
+                    except IOError, msg:
+                        self.cells[self.cellpointer] = 0
+                        sys.stderr.write("error writing to file: %s" %(msg,))
             elif i == ':':
-                print "TODO: ':' encountered"
+                if self.file is not None:
+                    try:
+                        s = self.file.read(1)
+                        if len(s) == 0:
+                           self.cells[self.cellpointer] = 0
+                        else:
+                           self.cells[self.cellpointer] = ord(s[0])
+                    except IOError, msg:
+                        self.cells[self.cellpointer] = 0
+                        sys.stderr.write("error reading from file: %s" %(msg,))
             elif i == 'D':
                 self.debug()
             if self.codecursor == len(self.code) - 1:
