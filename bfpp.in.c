@@ -29,9 +29,13 @@ void bf_socket_open_close(unsigned char *r, unsigned char **ptr)
         int error;
         int s;
         unsigned char *colon = strchr(*ptr, ':');
-        long lport = strtol(colon+1, NULL, 10);
-        uint16_t port = htons(lport);
+        long lport;
+        uint16_t port;
+
         if (!colon) {return;}
+
+        lport = strtol(colon+1, NULL, 10);
+        port = htons(lport);
         *colon = '\0';
 
         memset(&hints, 0, sizeof(hints));
@@ -139,7 +143,7 @@ void bf_file_read(unsigned char *r, unsigned char **ptr)
         }
     } else {
         if (fd >= 0) {
-            flen = read(sd, sbuf, sizeof(sbuf), 0);
+            flen = read(fd, fbuf, sizeof(fbuf), 0);
             if (flen <= 0) {
                 **ptr = 0;
             } else {
