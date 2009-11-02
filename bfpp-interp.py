@@ -102,6 +102,7 @@ class Interp():
             elif i == '#':
                 if self.file is not None:
                     self.file.close()
+                    self.file = None
                 else:
                     fname = ""
                     curcellpointer = self.cellpointer
