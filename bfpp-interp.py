@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2.6
 """
 A brainfuck++ interpertor. Based on pybrain4.
 """
@@ -202,13 +202,18 @@ class Interp():
         while self.cells[curcellpointer] != 0:
             addr = addr + chr(self.cells[curcellpointer])
             curcellpointer += 1
-        (host, sep, port) = addr.partition(':')
-        if not sep:
+        l = addr.split(':')
+        if len(l) < 2:
             self.cells[self.cellpointer] = self.maxint
             sys.stderr.write("parsing '%s' failed" % (addr,))
             return
+        host = l[0]
+        port = l[1]
         try:
             self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            if (len(l) > 2) and (l[2] == "ssl"):
+                import ssl
+                self.socket = ssl.wrap_socket(self.socket)
             self.socket.connect((host, int(port)))
             self.socket.setblocking(1)
             self.cells[self.cellpointer] = 0
