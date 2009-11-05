@@ -122,6 +122,7 @@ void bf_file_open_close(unsigned char *r, unsigned char **ptr)
         }
     } else {
         close(fd);
+        fd = -1;
     }
 }
 

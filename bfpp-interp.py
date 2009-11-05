@@ -129,6 +129,7 @@ class Interp():
                     try:
                         s = self.file.read(1)
                         if len(s) == 0:
+                           sys.stderr.write("error reading from file")
                            self.cells[self.cellpointer] = 0
                         else:
                            self.cells[self.cellpointer] = ord(s[0])
