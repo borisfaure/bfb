@@ -11,7 +11,7 @@ import termios
 import socket
 
 def TranslateToC(code, file):
-    fin = open('bfpp.in.c', 'r')
+    fin = open('bfutils/bfpp.in.c', 'r')
     file.writelines(fin.readlines())
     fin.close()
     for op in code:
