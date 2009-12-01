@@ -10,44 +10,6 @@ import tty
 import termios
 import socket
 
-def TranslateToC(code, file):
-    fin = open('bfutils/bfpp.in.c', 'r')
-    file.writelines(fin.readlines())
-    fin.close()
-    for op in code:
-        if op == '+':
-            file.write('++*ptr;\n')
-        elif op == '-':
-            file.write('--*ptr;\n')
-        elif op == '.':
-            file.write('putchar(*ptr);\n')
-        elif op == ',':
-            file.write('*ptr = getchar();\n')
-        elif op == '<':
-            file.write('--ptr;\n')
-        elif op == '>':
-            file.write('++ptr;\n')
-        elif op == '[':
-            file.write('while (*ptr) {\n')
-        elif op == ']':
-            file.write('} /* ] */\n');
-        elif op == '%':
-            file.write('bf_socket_open_close(r, &ptr);\n');
-        elif op == '^':
-            file.write('bf_socket_send(r, &ptr);\n');
-        elif op == '!':
-            file.write('bf_socket_read(r, &ptr);\n');
-        elif op == '#':
-            file.write('bf_file_open_close(r, &ptr);\n');
-        elif op == ';':
-            file.write('bf_file_write(r, &ptr);\n');
-        elif op == ':':
-            file.write('bf_file_read(r, &ptr);\n');
-        elif op == 'D':
-            file.write('bf_debug(r, &ptr);\n');
-    file.write('return 0; }\n')
-    file.close()
-
 class Interp():
     def __init__(self, code):
         self.cells = [0] * 30000
@@ -249,10 +211,6 @@ class Interp():
 def main():
     parser = optparse.OptionParser(usage="%prog [OPTIONS] FILE")
 
-    parser.add_option("-c",
-                      dest="cfilename", action="store", type="string",
-                      help="write to file a version translated to C")
-
     parser.add_option("-d", "--debug",
                       dest="debug", default=False, action="store_true",
                       help="run the python in interactive debug mode when 'D' is encountered")
@@ -265,16 +223,12 @@ def main():
         filename = os.path.abspath(args[0])
 
     code = bfpreprocessor.preprocess(filename, options.debug)
-    if options.cfilename is not None:
-        f = open(options.cfilename, 'w')
-        TranslateToC(code, f)
+    i = Interp(code)
+    if i:
+        i.run()
+        return 0
     else:
-        i = Interp(code)
-        if i:
-            i.run()
-            return 0
-        else:
-            return -1
+        return -1
 
 if __name__ == '__main__':
     sys.exit(main())
