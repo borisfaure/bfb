@@ -21,6 +21,7 @@
 #include <string.h>
 
 #ifdef BFPP
+#include <unistd.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -35,10 +36,12 @@
 #include <openssl/err.h>
 #endif
 
+#define BUFSZ 4096
+
 #ifdef BFPP
 static int sd = -1;
-static unsigned char sbuf[4096];
-static unsigned char *sbufpos;
+static char sbuf[BUFSZ];
+static char *sbufpos;
 static int slen;
 #ifdef BFPP_SSL
 static BIO *bio = NULL;
@@ -47,13 +50,13 @@ static SSL_CTX *ctx = NULL;
 #endif
 
 static int fd = -1;
-static unsigned char fbuf[4096];
-static unsigned char *fbufpos;
+static char fbuf[BUFSZ];
+static char *fbufpos;
 static int flen;
 #endif
 
 
-void bf_socket_open_close(unsigned char *r, unsigned char **ptr)
+void bf_socket_open_close(char **ptr)
 {
 #ifdef BFPP
     if (sd >= 0) {
@@ -70,8 +73,8 @@ void bf_socket_open_close(unsigned char *r, unsigned char **ptr)
 #endif
         return;
     } else {
-        unsigned char *colon = strchr(*ptr, ':');
-        unsigned char *colonops = strchr(colon + 1, ':');
+        char *colon = strchr(*ptr, ':');
+        char *colonops = strchr(colon + 1, ':');
 
         if (!colon) {return;}
 
@@ -97,7 +100,6 @@ void bf_socket_open_close(unsigned char *r, unsigned char **ptr)
 #endif
             struct addrinfo hints, *res, *res0;
             int error;
-            int s;
             long lport;
             uint16_t port;
 
@@ -148,7 +150,7 @@ void bf_socket_open_close(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-void bf_socket_send(unsigned char *r, unsigned char **ptr)
+void bf_socket_send(char **ptr)
 {
 #ifdef BFPP
 #ifdef BFPP_SSL
@@ -165,7 +167,7 @@ void bf_socket_send(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-void bf_socket_read(unsigned char *r, unsigned char **ptr)
+void bf_socket_read(char **ptr)
 {
 #ifdef BFPP
     if (sbufpos) {
@@ -208,7 +210,7 @@ void bf_socket_read(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-void bf_file_open_close(unsigned char *r, unsigned char **ptr)
+void bf_file_open_close(char **ptr)
 {
 #ifdef BFPP
     if (fd < 0) {
@@ -228,7 +230,7 @@ void bf_file_open_close(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-void bf_file_write(unsigned char *r, unsigned char **ptr)
+void bf_file_write(char **ptr)
 {
 #ifdef BFPP
     if (fd >= 0)
@@ -236,7 +238,7 @@ void bf_file_write(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-void bf_file_read(unsigned char *r, unsigned char **ptr)
+void bf_file_read(char **ptr)
 {
 #ifdef BFPP
     if (fbufpos) {
@@ -249,7 +251,7 @@ void bf_file_read(unsigned char *r, unsigned char **ptr)
         }
     } else {
         if (fd >= 0) {
-            flen = read(fd, fbuf, sizeof(fbuf), 0);
+            flen = read(fd, fbuf, sizeof(fbuf));
             if (flen <= 0) {
                 **ptr = 0;
             } else {
@@ -264,16 +266,48 @@ void bf_file_read(unsigned char *r, unsigned char **ptr)
 #endif
 }
 
-
-void bf_debug(unsigned char *r, unsigned char **ptr)
+void print_pos(char *r, unsigned int i)
 {
-    /* TODO */
+    char v;
+    if (i < 30000) {
+        v = *(r+i);
+        if ( v >= 33 && v <= 126)
+            printf("%d> %d %c |", i, v, v);
+        else
+            printf("%d> %d |", i, v);
+    }
 }
 
+#define BF_DEBUG(...)                                                       \
+    printf("Current position in the code: line %d of file %s\n",            \
+           __LINE__, __FILE__);                                             \
+    printf("Print cell range (A-B) (Current pos is %d):\n",                 \
+           (int) ( ptr - r ));                                              \
+                                                                            \
+    if (fgets(debugbuf, BUFSZ, stdin)) {                                    \
+        x = strtol(debugbuf, &endptr, 10);                                  \
+        if (*endptr == '-') {                                               \
+           y = strtol(endptr + 1, NULL, 10);                                \
+        }                                                                   \
+        if ( x >= 0 && y >= 0 ) {                                           \
+            print_pos(r, x);                                                \
+            for (i = x+1; i <= y; i++) {                                    \
+                print_pos(r, i);                                            \
+            }                                                               \
+        }                                                                   \
+        putchar('\n');                                                      \
+    }
 
-int main() {
-    unsigned char *r = calloc(30000, sizeof(unsigned char));
-    unsigned char *ptr = r;
+
+int main()
+{
+    char *r = calloc(30000, sizeof(char));
+    char *ptr = r;
+    long x = 0, y = 0;
+    long i;
+    char *endptr;
+    char debugbuf[BUFSZ];
+
 
 #ifdef BFPP_SSL
     SSL_library_init();

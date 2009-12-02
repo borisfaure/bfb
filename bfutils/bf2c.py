@@ -38,19 +38,19 @@ def TranslateToC(codelist, file):
             elif op == ']':
                 file.write('}                               /* ] */\n')
             elif op == '%':
-                file.write('bf_socket_open_close(r, &ptr);  /* % */\n')
+                file.write('bf_socket_open_close(&ptr);     /* % */\n')
             elif op == '^':
-                file.write('bf_socket_send(r, &ptr);        /* ^ */\n')
+                file.write('bf_socket_send(&ptr);           /* ^ */\n')
             elif op == '!':
-                file.write('bf_socket_read(r, &ptr);        /* ! */\n')
+                file.write('bf_socket_read(&ptr);           /* ! */\n')
             elif op == '#':
-                file.write('bf_file_open_close(r, &ptr);    /* # */\n')
+                file.write('bf_file_open_close(&ptr);       /* # */\n')
             elif op == ';':
-                file.write('bf_file_write(r, &ptr);         /* ; */\n')
+                file.write('bf_file_write(&ptr);            /* ; */\n')
             elif op == ':':
-                file.write('bf_file_read(r, &ptr);          /* : */\n')
+                file.write('bf_file_read(&ptr);             /* : */\n')
             elif op == 'D':
-                file.write('bf_debug(r, &ptr);              /* D */\n')
+                file.write('BF_DEBUG();                     /* D */\n')
     file.write('return 0; }\n')
     file.close()
 
