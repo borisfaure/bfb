@@ -50,7 +50,7 @@ def preprocess2(filename, debug = False):
         l(int) current line number
         c(list of char) brainfuck code of the current line
     """
-    linenbr = 0
+    linenbr = 1
     include_re = re.compile(r'\s*@include\(([^)]+)\)')
     if debug:
         BFIS = set([',','.','-','+','[',']','<','>','#',';',':','%','^','!','D'])
