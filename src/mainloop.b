@@ -12,7 +12,7 @@
       <<[-]>-]>[>
         = =:
         =@include(skiplinesocket.b)
-        @include(checkforprivmsg.b)
+        @include(checkforcommands.b)
       <->]<<
       >+++++[<---->-]<-->+<
       >>
