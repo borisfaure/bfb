@@ -32,7 +32,9 @@
             = IF NOT ('!')
           <<[-]>-]>[>
             = IF ('!')
+            <-
             @include(switchservercommands.b)
+            +>
           <-<<[[-]<]
           <->
           >>+>

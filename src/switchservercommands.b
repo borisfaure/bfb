@@ -4,4 +4,7 @@
 = (MSG is 'PLOP :::OHOH')
 
 = TODO: read PRIVMSG/JOIN...
+
+= 0| 1 | X | X | X | X | 0 | 0#
+= where XXXX is the user who did the action
 @include(skiplinesocket.b)
