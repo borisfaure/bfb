@@ -11,6 +11,7 @@
         @include(skiplinesocket.b)
       <<[-]>-]>[>
         = =:
+        =@include(skiplinesocket.b)
         @include(checkforprivmsg.b)
       <->]<<
       >+++++[<---->-]<-->+<
