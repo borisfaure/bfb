@@ -10,9 +10,7 @@ elaborate formatting of the stripped code can be specified. If so, the
 content of the format file is printed with the i:th non-whitespace character
 replaced with the i:th brainfuck instruction from the stripped source code.
 
-
-2008-03-23
-Mats Linander
+Based on work by Mats Linander
 """
 
 import sys
@@ -21,7 +19,7 @@ import optparse
 import os
 import bfpreprocessor
 
-def format(code, width=78, formatfile=None):
+def format(code, charmask='@', width=78, formatfile=None):
     """Formats code for pretty-printing."""
 
     output = []
@@ -31,11 +29,11 @@ def format(code, width=78, formatfile=None):
         for f in open(formatfile).read():
             if i >= clen:
                 break
-            if f.isspace():
-                output.append(f)
-            else:
+            if f is charmask:
                 output.append(code[i])
                 i += 1
+            else:
+                output.append(f)
     return '\n'.join([''.join(output)] +
                      [code[j:j+width] for j in xrange(i, clen, width)] +
                      ['\n'])
@@ -48,6 +46,9 @@ def main():
     parser.add_option("-w", "--width",
                       dest="width", type="int", metavar="W",default=78,
                       help="write output using line width W (default 78)")
+    parser.add_option("-c", "--charmask",
+                      dest="charmask", metavar="C",default="@",
+                      help="write output using mask C (default '@')")
     (options, args) = parser.parse_args()
 
     filename = None
@@ -57,7 +58,7 @@ def main():
         filename = os.path.abspath(args[0])
 
     code = bfpreprocessor.preprocess(filename)
-    sys.stdout.write(format(code, options.width, options.format))
+    sys.stdout.write(format(code, options.charmask, options.width, options.format))
 
     return 0
 
