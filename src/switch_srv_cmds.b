@@ -8,7 +8,7 @@
     [
       = IF NOT 'J'
       >+++++[>+++++[<<+++>>-]<-]<-
-      @include(skiplinesocket.b)
+      @include(skip_line_socket.b)
     ]>[
       = IF 'J'
       ![.
@@ -16,7 +16,7 @@
         >+<[
           = IF NOT 'O'
           >>++++[<++++++>-]<++[<+++>-]<+
-          @include(skiplinesocket.b)
+          @include(skip_line_socket.b)
         ]>[
           = IF 'O'
           ![.
@@ -24,7 +24,7 @@
             >+<[
               = IF NOT 'I'
               >++++++[>+++[<<++++>>-]<-]<+
-              @include(skiplinesocket.b)
+              @include(skip_line_socket.b)
             ]>[
               = IF 'I'
               ![.
@@ -32,7 +32,7 @@
                 >+<[
                   = IF NOT 'N'
                   >>++++[<++++++>-]<++[<+++>-]<
-                  @include(skiplinesocket.b)
+                  @include(skip_line_socket.b)
                 ]>[
                   = IF 'N'
                   ![.
@@ -40,7 +40,7 @@
                     >+<[
                       = IF NOT ' '
                       >++++[>++++[<<++>>-]<-]<
-                      @include(skiplinesocket.b)
+                      @include(skip_line_socket.b)
                     ]>[
                       = IF ' '
                       ![.
@@ -48,7 +48,7 @@
                         >+<[
                           = IF NOT ':'
                           >>+++++[<++++++>-]<-[<++>-]<
-                          @include(skiplinesocket.b)
+                          @include(skip_line_socket.b)
                         ]>[
                           = IF ':'
                           @include(srv_cmd_join.b)
@@ -66,13 +66,13 @@
 
   ]>[
     = IF 'P'
-    @include(skiplinesocket.b)
+    @include(skip_line_socket.b)
     ![.
       >+++++[>++++[<<---->>-]<-]<--
       >+<[
         = IF NOT 'R'
         >+++++[>++++[<<++++>>-]<-]<++
-        @include(skiplinesocket.b)
+        @include(skip_line_socket.b)
       ]>[
         = IF 'R'
         ![.
@@ -80,7 +80,7 @@
           >+<[
             = IF NOT 'I'
             >++++++[>+++[<<++++>>-]<-]<+
-            @include(skiplinesocket.b)
+            @include(skip_line_socket.b)
           ]>[
             = IF 'I'
             ![.
@@ -88,7 +88,7 @@
               >+<[
                 = IF NOT 'V'
                 >>++++[<++++>-]<+[<+++++>-]<+
-                @include(skiplinesocket.b)
+                @include(skip_line_socket.b)
               ]>[
                 = IF 'V'
                 ![.
@@ -96,7 +96,7 @@
                   >+<[
                     = IF NOT 'M'
                     >>++[<+++++>-]<+[<+++++++>-]<
-                    @include(skiplinesocket.b)
+                    @include(skip_line_socket.b)
                   ]>[
                     = IF 'M'
                     ![.
@@ -104,7 +104,7 @@
                       >+<[
                         = IF NOT 'S'
                         >+++++[>++++[<<++++>>-]<-]<+++
-                        @include(skiplinesocket.b)
+                        @include(skip_line_socket.b)
                       ]>[
                         = IF 'S'
                         ![.
@@ -112,7 +112,7 @@
                           >+<[
                             = IF NOT 'G'
                             >+++++[>+++++++[<<++>>-]<-]<+
-                            @include(skiplinesocket.b)
+                            @include(skip_line_socket.b)
                           ]>[
                             = IF 'G'
                             ![.
@@ -120,7 +120,7 @@
                               >+<[
                                 = IF NOT ' '
                                 >++++[>++++[<<++>>-]<-]<
-                                @include(skiplinesocket.b)
+                                @include(skip_line_socket.b)
                               ]>[
                                 = IF ' '
                                 @include(srv_cmd_privmsg.b)

@@ -2,7 +2,7 @@
 =   read the possible username until ' ' (or \r\n => return)
 =   read back to a '!'
 =   if found, check for commands PRIVMSG/JOIN...
-=   else, skiplinesocket
+=   else, skip_line_socket
 
 [-]+ = Main loop
 >[-]
@@ -33,7 +33,7 @@
           <<[-]>-]>[>
             = IF ('!')
             <-
-            @include(switchservercommands.b)
+            @include(switch_srv_cmds.b)
             +>
           <-<<[[-]<]
           <->
@@ -43,7 +43,7 @@
         [-]<]
 
         <[
-          @include(skiplinesocket.b)
+          @include(skip_line_socket.b)
         [-]
         ]>
         >+>

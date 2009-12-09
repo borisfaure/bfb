@@ -87,7 +87,7 @@
 <[<]>
 #+[
   >
-  @include(clearmemory.b)
+  @include(clear_memory.b)
   :[>:
      >[-]+>[-]<<[>>
          <<----------

@@ -8,11 +8,11 @@
 
       >[-]+>[-]<<[>>
         = !:
-        @include(skiplinesocket.b)
+        @include(skip_line_socket.b)
       <<[-]>-]>[>
         = =:
-        =@include(skiplinesocket.b)
-        @include(checkforcommands.b)
+        =@include(skip_line_socket.b)
+        @include(check_for_cmds.b)
       <->]<<
       >+++++[<---->-]<-->+<
       >>
@@ -22,28 +22,28 @@
         >++++++++[<--------->-]<-
         >[-]+>[-]<<[>>
           = !I
-          @include(skiplinesocket.b)
+          @include(skip_line_socket.b)
         <<[-]>-]>[>
           = =I
           ![.
             >++++++[<------------->-]<
             >[-]+>[-]<<[>>
               = !N
-              @include(skiplinesocket.b)
+              @include(skip_line_socket.b)
             <<[-]>-]>[>
               = =N
               ![.
                 >++++++++[<--------->-]<+
                 >[-]+>[-]<<[>>
                   = !G
-                  @include(skiplinesocket.b)
+                  @include(skip_line_socket.b)
                 <<[-]>-]>[>
                   = =G
                   ![.
                     >++++[<-------->-]<
                     >[-]+>[-]<<[>>
                       = !space
-                      @include(skiplinesocket.b)
+                      @include(skip_line_socket.b)
                     <<[-]>-]>[>
                       = =space
                       @include(pong.b)
