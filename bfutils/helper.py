@@ -71,18 +71,42 @@ class Interp():
                     self.codecursor = i
                     return
 
+def bfgen(string, sep, reset, value):
+    f = open('bfutils/helper.b')
+    bfarr = f.readlines()
+    f.close()
+    for c in string:
+        i = (256 + ord(c) - value) % 256
+        if i:
+            s = bfarr[i-1].strip()
+        else:
+            s = ""
+        print s+sep
+        if reset:
+            value = 0
+        else:
+            value = ord(c)
+
 
 def main():
-    parser = optparse.OptionParser(usage="%prog [OPTIONS] FILE")
+    parser = optparse.OptionParser(usage="%prog [OPTIONS] STRING")
 
     parser.add_option("-c", "--check",
                       dest="check", default=False, action="store_true",
                       help="check helper.b")
+    parser.add_option("-s", "--separator",
+                      dest="sep", default="", action="store",
+                      help="select the separator between each letters")
+    parser.add_option("-r", "--reset",
+                      dest="reset", default=False, action="store_true",
+                      help="reset the case after each letter is processed")
+    parser.add_option("-v", "--value",
+                      dest="value", default=0, action="store",
+                      help="value in the current case")
     (options, args) = parser.parse_args()
 
     if options.check:
-        f = open('helper.b')
-        #TODO
+        f = open('bfutils/helper.b')
         x = 1
         while True:
             try:
@@ -104,6 +128,12 @@ def main():
             except IOError, msg:
                 print msg
                 return -1
+    else:
+        if len(args) != 1:
+            parser.error("incorrect number of arguments")
+            return -1
+
+        bfgen(args[0], options.sep, options.reset, int(options.value))
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -69,6 +69,7 @@ def main():
     filename = None
     if len(args) != 1:
         parser.error("incorrect number of arguments")
+        return -1
     if args[0] != '-':
         filename = os.path.abspath(args[0])
 
