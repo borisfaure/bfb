@@ -1,3 +1,58 @@
-= TODO: Need to read the list of servers joined and act accordingly :)
-= :boris!~billiob@localhost.localdomain JOIN :#bfb
-@include(skip_line_socket.b)
+= Is it me or someone else ?
+-
+<<<<<<<<
+>+++++++[>+++++++[<<-->>-]<-]<
+>+<[
+  = IF NOT 'b'
+  >-<
+  >+++++++[>+++++++[<<++>>-]<-]<
+  >
+  @include(send_welcome.b)
+]>[
+  = IF 'b'
+  +++[<++++>-]<+[<------>-]<
+  >+<[
+    = IF NOT 'f'
+    >-<
+    >>++++[<++++>-]<+[<++++++>-]<
+    >
+    >+++++++[>+++++++[<<++>>-]<-]<
+    >
+    @include(send_welcome.b)
+  ]>[
+    = IF 'f'
+    -<
+    +++++++[>+++++++[<<-->>-]<-]<
+    >+<[
+      = IF NOT 'b'
+      >++++++[>+++++++[<<++>>-]<-]<
+      >
+      >>++++[<++++>-]<+[<++++++>-]<
+      >
+      >+++++++[>+++++++[<<++>>-]<-]<
+      >>
+      @include(send_welcome.b)
+    ]>[
+      = IF 'b'
+      -<
+      +<-[
+        = IF NOT 0x1
+        +
+        >
+        >++++++[>+++++++[<<++>>-]<-]<
+        >
+        >>++++[<++++>-]<+[<++++++>-]<
+        >
+        >+++++++[>+++++++[<<++>>-]<-]<
+        >>>
+        @include(send_welcome.b)
+      ]>[
+        = IF 0x1
+        <+>>>>>
+        @include(send_hi.b)
+      ]<
+    ]<
+  ]<
+]<
+
+>>>>>>>>
