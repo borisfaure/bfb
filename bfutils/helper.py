@@ -103,6 +103,9 @@ def main():
     parser.add_option("-v", "--value",
                       dest="value", default=0, action="store",
                       help="value in the current case")
+    parser.add_option("-m", "--comment",
+                      dest="comment", default=False, action="store_true",
+                      help="print the command line used in a comment")
     (options, args) = parser.parse_args()
 
     if options.check:
@@ -132,7 +135,8 @@ def main():
         if len(args) != 1:
             parser.error("incorrect number of arguments")
             return -1
-
+        if options.comment:
+            print "= helper.py " + str(sys.argv[1:])
         bfgen(args[0], options.sep, options.reset, int(options.value))
 
 if __name__ == '__main__':
