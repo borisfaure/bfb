@@ -1,0 +1,67 @@
+Using bfb
+=========
+Boris 'billiob' Faure <billiob@gmail.com>
+
+
+How does it work??
+------------------
+All the source code is written in brainfuck++ in .b files in the src/ directory.
+You can either run it in the Python interpretor or turn it into C code and then
+compile it.
+
+
+
+Requirements
+------------
+
+- A compiler, either gcc and clang are known to work
+- Python v2.5 or later (mainly tested with Python 2.6)
+- Libssl(-dev) if you want bfb to join ssl irc servers
+
+
+How to run it?
+--------------
+
+Using the Python Intrepretor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+. Run bfutils/bfpp-interp.py src/bfb.b
+. Enjoy!
+
+Run it fast!
+~~~~~~~~~~~~
+. Modify the makefile so that it fits your needs.
+  Defining BFPP_SSL enables SSL support.
+. Type make
+. Run bfb
+. Enjoy!
+
+
+
+Configuration
+-------------
+
+Simple configuration
+~~~~~~~~~~~~~~~~~~~~
+2 files are needed:
+
+- server:
+  Write in that file the server bfb should connect to. The format is:
+----------------------
+HOST:PORT
+----------------------
+  If you want to use SSL, use instead:
+----------------------
+HOST:PORT:ssl
+----------------------
+- channels:
+  Write in that files all the channels bfb should join. The format is one channel
+  per line.
+
+
+I want to customize it!!
+~~~~~~~~~~~~~~~~~~~~~~~~
+TODO
+
+
+
