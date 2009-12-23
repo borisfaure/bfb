@@ -1,8 +1,16 @@
-= helper.py ['-m', '-s.^', "Hey! I'm bfb, an irc bot written in brainfuck++ by billiob. My source code is available at http://github.com/billiob/bfb"]
+= helper.py ['-m', '-s.^', '-m', 'Hey ']
 >++++++[>+++[<<++++>>-]<-]<.^
 >+++++[<++++++>-]<-.^
 >++++[<+++++>-]<.^
->>++[<+++++>-]<+[<-------->-]<.^
+>>++[<+++++>-]<+[<-------->-]<-.^
+=
+
+[-]
+<[<]>
+[.^>]
+
+= helper.py ['-m', '-s.^', '-m', "! I'm bfb, an irc bot written in brainfuck++ by billiob. My source code is available at http://github.com/billiob/bfb"]
+>+++++[<++++++>-]<+++.^
 -.^
 >+++++++[<++++++>-]<-.^
 >+++++[<------->-]<+.^
