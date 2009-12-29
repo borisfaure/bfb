@@ -1,5 +1,10 @@
 #!/usr/bin/python2.6
 
+#
+# Copyright (C) 2009 Boris 'billiob' Faure
+# This code is under the Do What The Fuck You Want To Public License version 2 (WTFPL)
+#
+
 import os
 import sys
 import optparse
@@ -78,7 +83,7 @@ def bfgen(string, sep, reset, value):
     for c in string:
         i = (256 + ord(c) - value) % 256
         if i:
-            s = bfarr[i-1].strip()
+            s = bfarr[i-6].strip()
         else:
             s = ""
         print s+sep
@@ -110,6 +115,12 @@ def main():
 
     if options.check:
         f = open('bfutils/helper.b')
+        #skip license code
+        f.readline()
+        f.readline()
+        f.readline()
+        f.readline()
+        f.readline()
         x = 1
         while True:
             try:
