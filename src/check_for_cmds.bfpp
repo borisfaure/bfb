@@ -33,7 +33,7 @@
           <<[-]>-]>[>
             = IF ('!')
             <-
-            @include(switch_srv_cmds.b)
+            @include(switch_srv_cmds.bfpp)
             +>
           <-<<[[-]<]
           <->
@@ -43,7 +43,7 @@
         [-]<]
 
         <[
-          @include(skip_line_socket.b)
+          @include(skip_line_socket.bfpp)
         [-]
         ]>
         >+>

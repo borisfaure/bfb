@@ -72,7 +72,7 @@ class Interp():
                     return
 
 def bfgen(string, sep, reset, value):
-    f = open('bfutils/helper.b')
+    f = open('bfutils/helper.bf')
     bfarr = f.readlines()
     f.close()
     for c in string:

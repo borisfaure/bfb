@@ -8,7 +8,7 @@
     [
       = IF NOT 'J'
       >+++++[>+++++[<<+++>>-]<-]<-
-      @include(skip_line_socket.b)
+      @include(skip_line_socket.bfpp)
     ]>[
       = IF 'J'
       ![.
@@ -17,7 +17,7 @@
           = IF NOT 'O'
           >-<
           >>++++[<++++++>-]<++[<+++>-]<+
-          @include(skip_line_socket.b)
+          @include(skip_line_socket.bfpp)
         ]>[
           = IF 'O'
           ![.
@@ -25,7 +25,7 @@
             >+<[
               = IF NOT 'I'
               >+++++[>+++[<<++++>>-]<-]<+
-              @include(skip_line_socket.b)
+              @include(skip_line_socket.bfpp)
             ]>[
               = IF 'I'
               ![.
@@ -34,7 +34,7 @@
                   = IF NOT 'N'
                   >-<
                   >>++++[<++++++>-]<++[<+++>-]<
-                  @include(skip_line_socket.b)
+                  @include(skip_line_socket.bfpp)
                 ]>[
                   = IF 'N'
                   ![.
@@ -42,7 +42,7 @@
                     >+<[
                       = IF NOT ' '
                       >+++[>++++[<<++>>-]<-]<
-                      @include(skip_line_socket.b)
+                      @include(skip_line_socket.bfpp)
                     ]>[
                       = IF ' '
                       ![.
@@ -51,10 +51,10 @@
                           = IF NOT ':'
                           >-<
                           >>+++++[<++++++>-]<-[<++>-]<
-                          @include(skip_line_socket.b)
+                          @include(skip_line_socket.bfpp)
                         ]>[
                           = IF ':'
-                          @include(srv_cmd_join.b)
+                          @include(srv_cmd_join.bfpp)
                         ]<
                       ]
                     ]<
@@ -74,7 +74,7 @@
       >+<[
         = IF NOT 'R'
         >++++[>++++[<<++++>>-]<-]<++
-        @include(skip_line_socket.b)
+        @include(skip_line_socket.bfpp)
       ]>[
         = IF 'R'
         ![.
@@ -82,7 +82,7 @@
           >+<[
             = IF NOT 'I'
             >+++++[>+++[<<++++>>-]<-]<+
-            @include(skip_line_socket.b)
+            @include(skip_line_socket.bfpp)
           ]>[
             = IF 'I'
             ![.
@@ -91,7 +91,7 @@
                 = IF NOT 'V'
                 >-<
                 >>++++[<++++>-]<+[<+++++>-]<+
-                @include(skip_line_socket.b)
+                @include(skip_line_socket.bfpp)
               ]>[
                 = IF 'V'
                 ![.
@@ -100,7 +100,7 @@
                     = IF NOT 'M'
                     >-<
                     >>++[<+++++>-]<+[<+++++++>-]<
-                    @include(skip_line_socket.b)
+                    @include(skip_line_socket.bfpp)
                   ]>[
                     = IF 'M'
                     ![.
@@ -108,7 +108,7 @@
                       >+<[
                         = IF NOT 'S'
                         >++++[>++++[<<++++>>-]<-]<+++
-                        @include(skip_line_socket.b)
+                        @include(skip_line_socket.bfpp)
                       ]>[
                         = IF 'S'
                         ![.
@@ -116,7 +116,7 @@
                           >+<[
                             = IF NOT 'G'
                             >++++[>+++++++[<<++>>-]<-]<+
-                            @include(skip_line_socket.b)
+                            @include(skip_line_socket.bfpp)
                           ]>[
                             = IF 'G'
                             ![.
@@ -124,10 +124,10 @@
                               >+<[
                                 = IF NOT ' '
                                 >+++[>++++[<<++>>-]<-]<
-                                @include(skip_line_socket.b)
+                                @include(skip_line_socket.bfpp)
                               ]>[
                                 = IF ' '
-                                @include(srv_cmd_privmsg.b)
+                                @include(srv_cmd_privmsg.bfpp)
                               ]<
                             ]
                           ]<

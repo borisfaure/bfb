@@ -8,8 +8,8 @@
   >-<
   >+++++++[>+++++++[<<++>>-]<-]<
   >
-  =@include(skip_line_socket.b)
-  @include(send_welcome.b)
+  =@include(skip_line_socket.bfpp)
+  @include(send_welcome.bfpp)
 ]>[
   = IF 'b'
   +++[<++++>-]<+[<------>-]<
@@ -20,8 +20,8 @@
     >
     >+++++++[>+++++++[<<++>>-]<-]<
     >
-    =@include(skip_line_socket.b)
-    @include(send_welcome.b)
+    =@include(skip_line_socket.bfpp)
+    @include(send_welcome.bfpp)
   ]>[
     = IF 'f'
     -<
@@ -34,8 +34,8 @@
       >
       >+++++++[>+++++++[<<++>>-]<-]<
       >>
-      =@include(skip_line_socket.b)
-      @include(send_welcome.b)
+      =@include(skip_line_socket.bfpp)
+      @include(send_welcome.bfpp)
     ]>[
       = IF 'b'
       -<
@@ -49,13 +49,13 @@
         >
         >+++++++[>+++++++[<<++>>-]<-]<
         >>>
-        =@include(skip_line_socket.b)
-        @include(send_welcome.b)
+        =@include(skip_line_socket.bfpp)
+        @include(send_welcome.bfpp)
       ]>[
         = IF 0x1
         <+>>>>>
-        =@include(skip_line_socket.b)
-        @include(send_hi.b)
+        =@include(skip_line_socket.bfpp)
+        @include(send_hi.bfpp)
       ]<
     ]<
   ]<

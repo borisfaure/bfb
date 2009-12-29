@@ -10,10 +10,10 @@
       [
         = IF NOT ':'
         >>+++++[<++++++>-]<-[<++>-]<
-        @include(skip_line_socket.b)
+        @include(skip_line_socket.bfpp)
       ]>[
         = IF ':'
-        @include(check_for_cmds.b)
+        @include(check_for_cmds.bfpp)
       ]<
     ]>[
       = IF 'P'
@@ -22,7 +22,7 @@
         >+<[
           = IF NOT 'I'
           >+++++[>+++[<<++++>>-]<-]<+
-          @include(skip_line_socket.b)
+          @include(skip_line_socket.bfpp)
         ]>[
           = IF 'I'
           ![.
@@ -31,7 +31,7 @@
               = IF NOT 'N'
               >-<
               >>++++[<++++++>-]<++[<+++>-]<
-              @include(skip_line_socket.b)
+              @include(skip_line_socket.bfpp)
             ]>[
               = IF 'N'
               ![.
@@ -39,7 +39,7 @@
                 >+<[
                   = IF NOT 'G'
                   >++++[>+++++++[<<++>>-]<-]<+
-                  @include(skip_line_socket.b)
+                  @include(skip_line_socket.bfpp)
                 ]>[
                   = IF 'G'
                   ![.
@@ -47,10 +47,10 @@
                     >+<[
                       = IF NOT ' '
                       >+++[>++++[<<++>>-]<-]<
-                      @include(skip_line_socket.b)
+                      @include(skip_line_socket.bfpp)
                     ]>[
                       = IF ' '
-                      @include(pong.b)
+                      @include(pong.bfpp)
                     ]<
                   ]
                 ]<

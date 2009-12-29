@@ -1,0 +1,8 @@
+
+@include(fill_address.bfpp)
+%+[-
+  @include(clear_memory.bfpp)
+  @include(join_irc.bfpp)
+  @include(ping_or_else.bfpp)
+]
+
