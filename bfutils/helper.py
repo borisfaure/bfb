@@ -80,10 +80,11 @@ def bfgen(string, sep, reset, value):
     f = open('bfutils/helper.bf')
     bfarr = f.readlines()
     f.close()
+    bfarr = bfarr[4:]
     for c in string:
         i = (256 + ord(c) - value) % 256
         if i:
-            s = bfarr[i-6].strip()
+            s = bfarr[i].strip()
         else:
             s = ""
         print s+sep
@@ -114,7 +115,7 @@ def main():
     (options, args) = parser.parse_args()
 
     if options.check:
-        f = open('bfutils/helper.b')
+        f = open('bfutils/helper.bf')
         #skip license code
         f.readline()
         f.readline()
