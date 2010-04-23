@@ -17,7 +17,6 @@
     = IF NOT '#'
     >-<
     >+++++[<+++++++>-]<
-    >
     = Read till ' '
     = TODO
     @include(skip_line_socket.bfpp)
