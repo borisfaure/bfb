@@ -3,7 +3,6 @@
 = This code is under the Do What The Fuck You Want To Public License version 2 (WTFPL)
 =
 
-= TODO: read channel/bfb then :MSGGGGGGGGGGG and act accordingly :)
 = :boris!~boris@localhost PRIVMSG #geek :PLOP :::OHOH
 = :boris!~boris@localhost PRIVMSG bfb :PLOP :::OHOH
 = (MSG is 'PLOP :::OHOH')
@@ -18,8 +17,53 @@
     >-<
     >+++++[<+++++++>-]<
     = Read till ' '
-    = TODO
-    @include(skip_line_socket.bfpp)
+    >
+      [-]+ = Main loop
+      >[-]
+      >[-]+
+      <<[>> = Main Loop
+        [>]
+        ![.
+          ----------
+          >[-]+>[-]<<[
+            = IF NOT('\n')
+            ----------------------
+            [
+              = IF NOT ' '
+              = +32
+              >+++[>++++[<<++>>-]<-]
+            ]>
+            [>
+            = IF (' ')
+              <
+              -
+              <<
+
+              <[
+                @include(check_pm.bfpp)
+                <[[-]<]<-
+                <[-]
+              ]>
+              >+>
+              +>
+
+            <->]<<
+            >[-]+>[-]
+          <-]>[
+            = =\n
+            -<<
+            [[-]<]
+            >>
+          ]<<
+          >
+
+        ]<
+        [<]
+        <
+      ]
+      >
+      >-
+      <<
   ]>[
     = IF '#'
     -
