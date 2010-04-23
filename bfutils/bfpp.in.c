@@ -1,7 +1,7 @@
 /*****************************************************************************
  *     C code used to generate a brainfuck program into a C executable       *
  *                                                                           *
- *               Copyright (C) 2009 Boris 'billiob' Faure                    *
+ *            Copyright (C) 2009-2010 Boris 'billiob' Faure                  *
  * This code is under the DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE        *
  * Version 2                                                                 *
  *                                                                           *
