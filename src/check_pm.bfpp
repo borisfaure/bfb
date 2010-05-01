@@ -6,4 +6,7 @@
 = :boris!~boris@localhost PRIVMSG bfb :PLOP :::OHOH
 = (MSG is 'PLOP :::OHOH')
 
+
+!. !. !. !. = Read 'fb :'
+
 @include(skip_line_socket.bfpp)
