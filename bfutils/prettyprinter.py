@@ -24,18 +24,19 @@ def format(code, charmask='@', width=78, formatfile=None):
 
     output = []
 
-    clen, i = len(code), 0
+    clen = len(code)
+    i = 0
     if formatfile:
         for f in open(formatfile).read():
             if i >= clen:
                 break
-            if f is charmask:
+            if f == charmask:
                 output.append(code[i])
                 i += 1
             else:
                 output.append(f)
     return '\n'.join([''.join(output)] +
-                     [code[j:j+width] for j in xrange(i, clen, width)] +
+                     [code[j:j+width] for j in range(i, clen, width)] +
                      ['\n'])
 
 def main():
