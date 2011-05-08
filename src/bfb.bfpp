@@ -3,10 +3,15 @@
 = This code is under the Do What The Fuck You Want To Public License version 2 (WTFPL)
 =
 
-@include(fill_address.bfpp)
-%+[-
++[>
+  @include(fill_address.bfpp)
+  %+[-
+    @include(clear_memory.bfpp)
+    @include(join_irc.bfpp)
+    @include(ping_or_else.bfpp)
+    %
+  ]
   @include(clear_memory.bfpp)
-  @include(join_irc.bfpp)
-  @include(ping_or_else.bfpp)
-]
+  <<
+<]
 
