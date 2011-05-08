@@ -34,7 +34,7 @@ def TranslateToC(codelist, file):
             elif op == '>':
                 file.write('++ptr;                          /* > */\n')
             elif op == '[':
-                file.write('while (*ptr) {                  /* ] */\n')
+                file.write('while (*ptr) {                  /* [ */\n')
             elif op == ']':
                 file.write('}                               /* ] */\n')
             elif op == '%':
