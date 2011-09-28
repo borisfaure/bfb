@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 """Preprocesses brainfuck sourcecode.
 
 The preprocessor performs comment removal and pretty-printing of brainfuck

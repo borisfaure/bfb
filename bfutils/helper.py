@@ -1,4 +1,4 @@
-#!/usr/bin/python2.6
+#!/usr/bin/env python
 
 #
 # Copyright (C) 2009-2011 Boris 'billiob' Faure
