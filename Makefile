@@ -1,4 +1,4 @@
-CC=clang
+CC=cc
 
 bfb: bfb.c
 	${CC} -Wall -Wextra -g -ggdb -O0 -DBFPP -DBFPP_SSL bfb.c -o bfb -lcrypto -lssl
