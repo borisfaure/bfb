@@ -59,7 +59,11 @@ static int flen;
 void bf_socket_open_close(char **ptr)
 {
 #ifdef BFPP
-    if (sd >= 0) {
+    if (sd >= 0
+#ifdef BFPP_SSL
+    || bio
+#endif
+    ) {
 #ifdef BFPP_SSL
         if (bio) {
             BIO_free_all(bio);
