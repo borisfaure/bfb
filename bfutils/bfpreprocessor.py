@@ -59,11 +59,13 @@ def preprocess2(filename, debug = False):
         BFIS = set([',','.','-','+','[',']','<','>','#',';',':','%','^','!'])
     if filename:
         file = open(filename, "r")
+        basedir = os.getcwd()
+        filename = os.path.relpath(filename, basedir)
         directory = os.path.split(filename)[0]
     else:
         filename = "STDIN"
         file = sys.stdin
-        directory = os.getcwd()
+        directory = getcwd()
 
     data = []
     for line in file:
