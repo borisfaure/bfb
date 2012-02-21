@@ -2,7 +2,7 @@
 """
 A brainfuck(++) translator to C.
 
-Copyright (C) 2009-2011 Boris 'billiob' Faure
+Copyright (C) 2009-2012 Boris 'billiob' Faure
 This code is under the DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE Version 2
 
 
