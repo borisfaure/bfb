@@ -19,8 +19,8 @@ def TranslateToC(codelist, file):
     file.writelines(fin.readlines())
     fin.close()
     for (f,l,c) in codelist:
-        file.write('/* %s:%d */\n' % (f,l))
         for op in c:
+            file.write('#line %d "%s" \n' % (l, f))
             if op == '+':
                 file.write('++*ptr;                         /* + */\n')
             elif op == '-':
