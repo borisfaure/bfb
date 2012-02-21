@@ -52,9 +52,12 @@ Simple configuration
         HOST:PORT:ssl
 
 * `channels`:
-  Write in that file all the channels bfb should join. The format is one channel
-  per line.
 
+  Write in that file all the channels bfb should join. The format is one
+  channel per line.
+
+A third file called `pass` can be used to set a server password used by bfb.
+The password is written directly in the file (ended or not by a newline).
 
 I want to customize it!!
 ------------------------

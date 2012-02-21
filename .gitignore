@@ -4,5 +4,6 @@
 .*.swo
 /channels
 /server
+/pass
 /bfb
 /bfb.c
