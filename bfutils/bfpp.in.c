@@ -219,7 +219,7 @@ void bf_file_open_close(char **ptr)
 #ifdef BFPP
     if (fd < 0) {
         fd = open(*ptr, O_RDWR|O_CREAT, 0777);
-        if (fd) {
+        if (fd >= 0) {
             memset(fbuf, 0, sizeof(fbuf));
             fbufpos = NULL;
             flen = 0;
