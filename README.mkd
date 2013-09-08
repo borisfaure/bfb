@@ -57,7 +57,10 @@ Simple configuration
   channel per line.
 
 A third file called `pass` can be used to set a server password used by bfb.
-The password is written directly in the file (ended or not by a newline).
+The password is written directly in the file (ended or not by a newline).  If
+no `PASS` command should be sent, a pass file should be created and the rights
+Read and Write should be removed on that file with `chmod -rw pass` for
+example.
 
 I want to customize it!!
 ------------------------
