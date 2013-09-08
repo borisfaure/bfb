@@ -78,9 +78,11 @@ void bf_socket_open_close(char **ptr)
         return;
     } else {
         char *colon = strchr(*ptr, ':');
-        char *colonops = strchr(colon + 1, ':');
+        char *colonops;
 
-        if (!colon) {return;}
+        if (!colon) return;
+
+        colonops = strchr(colon + 1, ':');
 
 #ifdef BFPP_SSL
         if (colonops && strncmp(colonops+1, "ssl", 3) == 0 ) {
