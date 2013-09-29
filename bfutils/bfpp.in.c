@@ -66,7 +66,8 @@ void bf_socket_open_close(char **ptr)
     ) {
 #ifdef BFPP_SSL
         if (bio) {
-            BIO_free_all(bio);
+            /* leak... but exit isn't called from nowhere…
+            BIO_free(bio); */
             bio = NULL;
         } else {
 #endif
@@ -86,6 +87,9 @@ void bf_socket_open_close(char **ptr)
 
 #ifdef BFPP_SSL
         if (colonops && strncmp(colonops+1, "ssl", 3) == 0 ) {
+            struct timeval tv;
+            int _sock = -1;
+
             *colonops = '\0';
             if (!ctx) {
                 ctx = SSL_CTX_new(SSLv23_client_method());
@@ -102,12 +106,21 @@ void bf_socket_open_close(char **ptr)
                 goto error;
             }
             *colonops = ':';
+
+            _sock = BIO_get_fd(bio, NULL);
+            memset(&tv, 0, sizeof(struct timeval));
+            tv.tv_sec = 5 * 60;  /* 5 minutes timeout */
+            setsockopt(_sock, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv,
+                       sizeof(struct timeval));
+            setsockopt(_sock, SOL_SOCKET, SO_SNDTIMEO, (struct timeval *)&tv,
+                       sizeof(struct timeval));
         } else {
 #endif
             struct addrinfo hints, *res, *res0;
             int error;
             long lport;
             uint16_t port;
+            struct timeval tv;
 
             lport = strtol(colon+1, NULL, 10);
             port = htons(lport);
@@ -123,10 +136,18 @@ void bf_socket_open_close(char **ptr)
                 goto error;
             }
             for (res = res0; res; res = res->ai_next) {
+
                 sd = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
                 if (sd < 0) {
                     continue;
                 }
+
+                memset(&tv, 0, sizeof(struct timeval));
+                tv.tv_sec = 5 * 60;  /* 5 minutes timeout */
+                setsockopt(sd, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv,
+                           sizeof(struct timeval));
+                setsockopt(sd, SOL_SOCKET, SO_SNDTIMEO, (struct timeval *)&tv,
+                           sizeof(struct timeval));
 
                 ((struct sockaddr_in*)res->ai_addr)->sin_port = port;
                 if (connect(sd, res->ai_addr, res->ai_addrlen) < 0) {
