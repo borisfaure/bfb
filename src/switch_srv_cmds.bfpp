@@ -50,18 +50,7 @@
                       @include(skip_line_socket.bfpp)
                     ]>[
                       = IF ' '
-                      ![.
-                        >>+++++[<++++++>-]<-[<-->-]<
-                        >+<[
-                          = IF NOT ':'
-                          >-<
-                          >>+++++[<++++++>-]<-[<++>-]<
-                          @include(skip_line_socket.bfpp)
-                        ]>[
-                          = IF ':'
-                          @include(srv_cmd_join.bfpp)
-                        ]<
-                      ]
+                      @include(srv_cmd_join.bfpp)
                     ]<
                   ]
                 ]<
