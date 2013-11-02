@@ -1,5 +1,5 @@
 =
-= Copyright (C) 2009-2012 Boris 'billiob' Faure
+= Copyright (C) 2009-2013 Boris 'billiob' Faure
 = This code is under the Do What The Fuck You Want To Public License version 2 (WTFPL)
 =
 
