@@ -87,7 +87,7 @@ def bfgen(string, sep, reset, value):
             s = bfarr[i].strip()
         else:
             s = ""
-        print s+sep
+        print(s+sep)
         if reset:
             value = 0
         else:
@@ -130,25 +130,25 @@ def main():
                     (a,b) = i.run()
                     if (a == 0 and b[0] == x and b[1] == 0 and b[2] == 0 
                        and b[3] == 0 and b[4] == 0 and b[5] == 0):
-                        print "%d OK" %(x,)
+                        print("%d OK" %(x,))
                     else:
-                        print "%d FAIL %d, %d|%d|%d|%d|%d|%d" %(x,a,
-                            b[0],b[1],b[2],b[3],b[4],b[5])
+                        print("%d FAIL %d, %d|%d|%d|%d|%d|%d" %(x,a,
+                            b[0],b[1],b[2],b[3],b[4],b[5]))
                     x = x + 1
                 else:
                     return -1
                 if x == 256:
                     f.close()
                     return 0
-            except IOError, msg:
-                print msg
+            except IOError as msg:
+                print(msg)
                 return -1
     else:
         if len(args) != 1:
             parser.error("incorrect number of arguments")
             return -1
         if options.comment:
-            print "= helper.py " + str(sys.argv[1:])
+            print("= helper.py " + str(sys.argv[1:]))
         bfgen(args[0], options.sep, options.reset, int(options.value))
 
 if __name__ == '__main__':

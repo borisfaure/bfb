@@ -74,7 +74,7 @@ class Interp():
                     try:
                         self.file = open(fname)
                         self.cells[self.cellpointer] = 0
-                    except IOError, msg:
+                    except IOError as msg:
                         self.file = None
                         self.cells[self.cellpointer] = self.maxint
                         sys.stderr.write("opening file '%s' failed: %s"
@@ -83,7 +83,7 @@ class Interp():
                 if self.file is not None:
                     try:
                         self.file.write(chr(self.cells[self.cellpointer]))
-                    except IOError, msg:
+                    except IOError as msg:
                         self.cells[self.cellpointer] = 0
                         sys.stderr.write("error writing to file: %s" %(msg,))
             elif i == ':':
@@ -95,7 +95,7 @@ class Interp():
                            self.cells[self.cellpointer] = 0
                         else:
                            self.cells[self.cellpointer] = ord(s[0])
-                    except IOError, msg:
+                    except IOError as msg:
                         self.cells[self.cellpointer] = 0
                         sys.stderr.write("error reading from file: %s" %(msg,))
             elif i == 'D':
@@ -179,7 +179,7 @@ class Interp():
             self.socket.connect((host, int(port)))
             self.socket.setblocking(1)
             self.cells[self.cellpointer] = 0
-        except socket.error, msg:
+        except socket.error as msg:
             self.socket.close()
             self.socket = None
             self.cells[self.cellpointer] = self.maxint
@@ -188,14 +188,14 @@ class Interp():
 
 
     def debug(self):
-        print "Current position in the code: %d/%d" % (self.codecursor,
-                                                       len(self.code))
-        print "Next 5 instructions: ",
+        print("Current position in the code: %d/%d" % (self.codecursor,
+                                                       len(self.code)))
+        print("Next 5 instructions: ", end=' ')
         for i in range(self.codecursor + 1, min(self.codecursor + 6, len(self.code))):
-            print self.code[i],
-        print ''
-        print "Current pointer is %d" % (self.cellpointer,)
-        print "Print cell range:"
+            print(self.code[i], end=' ')
+        print('')
+        print("Current pointer is %d" % (self.cellpointer,))
+        print("Print cell range:")
         rng = sys.stdin.readline()
         (x, sep, y) = rng.partition('-')
         if sep:
@@ -205,8 +205,8 @@ class Interp():
             except ValueError:
                 return
             for i in range(x,y+1):
-                print "| %d" % (self.cells[i],),
-            print ''
+                print("| %d" % (self.cells[i],), end=' ')
+            print('')
 
 def main():
     parser = optparse.OptionParser(usage="%prog [OPTIONS] FILE")
